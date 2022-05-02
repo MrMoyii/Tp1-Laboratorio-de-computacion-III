@@ -9,6 +9,61 @@
     <title>Primer trabajo práctico</title>
 </head>
 <body>
-    
+    <main>
+        <div id="tituloSimulador">
+            <h1>Simulador de Plazo Fijo</h1>
+        </div>
+        <div id="nombrePersona">
+            <label>
+                Nombre: 
+                <input id="txtNombre" type="text" required>
+            </label>
+        </div>
+        <br>
+        <br>
+        <div id="apellidoPersona">
+            <label>
+                Apellido:
+                <input id="txtApellido" type="text" required>
+            </label>
+        </div>
+        <br>
+        <br>
+        <div id="montoAInvertirYCantidadDiasPersona">
+            <label>
+                Capital a invertir:
+                <input id="txtMontoAInvertir" type="number" min="1000">
+            </label>
+            <br>
+            <span class="aclaracion">(mínimo $1000)</span>
+            <br>
+            <br>
+            <label>
+                Plazo (en días):
+                <input id="txtCantidadDias" type="number" min="30">
+            </label>
+            <br>
+            <span class="aclaracion">(mínimo 30 días - máximo 365 días)</span>
+        </div>
+        <br>
+        <br>
+        <div id="reinvertirCapitalPersona">
+            <label>
+                ¿Desea reinvertir el capital?
+                <input type="checkbox" id="checkBoxReinvertirCapital">
+            </label>
+        </div>
+        <br>
+        <button id="btnCalcularMonto" value="calcular"><p>Calcular</p></button>
+        <br>
+        <br>
+        <button id="btnBorrar" value="borrar"><p>Borrar</p></button>     
+        <br>
+        <br>
+        <div class="aclaracion">
+            <a href="porcentajeTasas.docx">Porcentaje de tasas aquí</a>
+        </div>
+        <script src="plazoFijo.js"></script>
+    </main>
 </body>
 </html>
