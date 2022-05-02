@@ -1,19 +1,22 @@
-function validarMontoAInvertir(){
-    valor = document.getElementById('txtMontoAInvertir').value;
-    if(isNaN(valor) || valor <= 1000 ) {
-        return true;
+let valorDinero = document.getElementById('txtMontoAInvertir').value;
+let valorDias = document.getElementById('txtCantidadDias').value;
+
+function validarMontoAInvertir(valorDinero){
+    //valida si el monto a invertir ingreasdo es un número o si es menor a 1000
+    if(isNaN(valorDinero) || valorDinero < 1000) {
+        return false;
     }
-    else{
-        //mensaje error
-    }
+    return true;
 }
 
-function validarDiasAInvertir(){
-    valor = document.getElementById('txtMontoAInvertir').value;
-    if(isNaN(valor) || valor <= 30 ) {
-        return true;
+function validarDiasAInvertir(valorDias){
+    //valida si los días es un número y como minimo 30
+    if(isNaN(valorDias) || valorDias <= 30) {
+        return false;
     }
-    else{
-        //mensaje error
-    }
+    return true;
+}
+
+function montoFinal(valorDinero, valorDias){
+    
 }
