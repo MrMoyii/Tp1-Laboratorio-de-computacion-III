@@ -7,8 +7,10 @@ function validarMontoAInvertir(valorDinero){
 }
 
 function validarDiasAInvertir(cantidadDias){
-    //valida si los días es un número y como minimo 30
-    if (isNaN(cantidadDias) || cantidadDias < 30) {
+    cantidadDias = Number(cantidadDias) // asegurarse de que trabajamos con un Number
+
+    //valida si los días es un número entero y como minimo 30
+    if (!Number.isInteger(cantidadDias) || cantidadDias < 30) {
         return false;
     }
     return true;
