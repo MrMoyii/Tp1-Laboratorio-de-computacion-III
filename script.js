@@ -1,3 +1,10 @@
+function esNombreValido(nombre) {
+    // El nombre o apellido puede tener como máximo 2 palabras
+    // Válido: "Lisandro", "María Ángeles", "Pérez", "Pérez García"
+    // No válido: "María de los Ángeles"
+    return /^\p{L}+(\s\p{L}+)?$/u.test(nombre);
+}
+
 function validarMontoAInvertir(valorDinero){
     //valida si el monto a invertir ingreasdo es un número o si es menor a 1000
     if(isNaN(valorDinero) || valorDinero < 1000) {
