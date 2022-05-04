@@ -42,7 +42,6 @@ function montoFinal(valorDinero, cantidadDias){
 
     return montoFinal;
 }
-
 function obtenerDatosFormulario() {
     obtenerValores();
 
@@ -63,7 +62,6 @@ function obtenerDatosFormulario() {
 
     return datosFormulario;
 }
-
 function obtenerValores(){
     //agarramos los valores de los inputs
     valorNombre = document.getElementById('txtNombre').value;
@@ -71,11 +69,10 @@ function obtenerValores(){
     valorDinero = document.getElementById('txtMontoAInvertir').value;
     cantidadDias = document.getElementById('txtCantidadDias').value;
 }
-
 function mostrarErroresFormulario(datosFormulario) {
     const elementosDeError = document.querySelectorAll(".errorInput");
 
-    /**
+    /*
      * Si un input es válido, al texto del elementoDeError se le asigna una
      * string vacía para "borrar" un mensaje de error que haya sido generado
      * previamente, por ejemplo, si el mismo input era inválido antes
@@ -95,6 +92,7 @@ function mostrarErroresFormulario(datosFormulario) {
     elementosDeError[3].textContent = (datosFormulario.dias.esValido)
         ? ""
         : "La cantidad de días debe ser un número entero mayor o igual a 30";
+
 }
 
 document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {

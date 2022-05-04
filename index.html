@@ -10,59 +10,38 @@
 </head>
 <body>
     <main>
-        <div id="tituloSimulador">
+        <div class="form">            
             <h1>Simulador de Plazo Fijo</h1>
-        </div>
-        <div id="nombrePersona">
-            <label>
-                Nombre: 
-                <input id="txtNombre" type="text" required>
+            <div id="nombrePersona" class="grupo">
+                <input id="txtNombre" type="text" required><span class="barra"></span>
+                <label>Nombre</label>
                 <small id="errorNombre" class="errorInput"></small>
-            </label>
-        </div>
-        <br>
-        <br>
-        <div id="apellidoPersona">
-            <label>
-                Apellido:
-                <input id="txtApellido" type="text" required>
+            </div>
+            <div id="apellidoPersona" class="grupo">
+                <input id="txtApellido" type="text" required><span class="barra"></span>
+                <label>Apellido</label>
                 <small id="errorApellido" class="errorInput"></small>
-            </label>
+            </div>
+            <div id="montoAInvertirYCantidadDias" class="grupo">
+                <div id="capitalAInvertir" class="grupoMontoYDias">
+                    <input id="txtMontoAInvertir" type="number" min="1000" required><span class="barra"></span>
+                    <label>Capital a invertir</label>
+                    <span class="aclaracion">(mínimo $1000)</span>
+                    <small id="errorMonto" class="errorInput"></small>
+                </div>
+                <div id="PlazoAInvertir" class="grupoMontoYDias">
+                    <input id="txtCantidadDias" type="number" min="30" required><span class="barra"></span>
+                    <label>Plazo (en días):</label>
+                    <span class="aclaracion">(mínimo 30 días)</span>
+                    <small id="errorDias" class="errorInput"></small>
+                </div>
+            </div>
         </div>
-        <br>
-        <br>
-        <div id="montoAInvertirYCantidadDias">
-            <label>
-                Capital a invertir:
-                <input id="txtMontoAInvertir" type="number" min="1000">
-                <small id="errorMonto" class="errorInput"></small>
-            </label>
-            <br>
-            <span class="aclaracion">(mínimo $1000)</span>
-            <br>
-            <br>
-            <label>
-                Plazo (en días):
-                <input id="txtCantidadDias" type="number" min="30">
-                <small id="errorDias" class="errorInput"></small>
-            </label>
-            <br>
-            <span class="aclaracion">(mínimo 30 días)</span>
+        <div id="reinvertirCapitalPersona" class="grupo">
+            ¿Desea reinvertir el capital? <input type="checkbox" id="checkBoxReinvertirCapital">
         </div>
-        <br>
-        <br>
-        <div id="reinvertirCapitalPersona">
-            <label>
-                ¿Desea reinvertir el capital?
-                <input type="checkbox" id="checkBoxReinvertirCapital">
-            </label>
-        </div>
-        <br>
-        <button id="btnCalcularMonto" value="calcular">calcular</button>
-        <br>
-        <br>
-        
-        <div class="aclaracion">
+        <button id="btnCalcularMonto" value="calcular">Calcular</button>    
+        <div class="aclaracion" class="grupo">
             <a href="porcentajeTasas.docx">Porcentaje de tasas aquí</a>
         </div>
     </main>
