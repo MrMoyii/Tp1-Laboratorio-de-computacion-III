@@ -72,6 +72,31 @@ function obtenerValores(){
     cantidadDias = document.getElementById('txtCantidadDias').value;
 }
 
+function mostrarErroresFormulario(datosFormulario) {
+    const elementosDeError = document.querySelectorAll(".errorInput");
+
+    /**
+     * Si un input es válido, al texto del elementoDeError se le asigna una
+     * string vacía para "borrar" un mensaje de error que haya sido generado
+     * previamente, por ejemplo, si el mismo input era inválido antes
+     */
+    elementosDeError[0].textContent = (datosFormulario.nombre.esValido)
+        ? ""
+        : "El nombre puede contener como máximo 2 palabras separadas por un espacio";
+
+    elementosDeError[1].textContent = (datosFormulario.apellido.esValido)
+        ? ""
+        : "El apellido puede contener como máximo 2 palabras separadas por un espacio";
+
+    elementosDeError[2].textContent = (datosFormulario.monto.esValido)
+        ? ""
+        : "El monto a invertir debe ser un número mayor o igual a 1000";
+
+    elementosDeError[3].textContent = (datosFormulario.dias.esValido)
+        ? ""
+        : "La cantidad de días debe ser un número entero mayor o igual a 30";
+}
+
 document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {
     e.preventDefault();
 
