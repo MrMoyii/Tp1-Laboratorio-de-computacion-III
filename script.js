@@ -43,7 +43,25 @@ function montoFinal(valorDinero, cantidadDias){
     return montoFinal;
 }
 
+function obtenerDatosFormulario() {
+    obtenerValores();
 
+    const datosFormulario = {
+        nombre: {esValido: esNombreValido(valorNombre)},
+        apellido: {esValido: esNombreValido(valorApellido)},
+        monto: {esValido: validarMontoAInvertir(valorDinero)},
+        dias: {esValido: validarDiasAInvertir(cantidadDias)},
+        esValido: null,
+    };
+
+    datosFormulario.esValido = (
+        datosFormulario.nombre.esValido
+        && datosFormulario.apellido.esValido
+        && datosFormulario.monto.esValido
+        && datosFormulario.dias.esValido
+    );
+
+    return datosFormulario;
 }
 
 function obtenerValores(){
@@ -57,4 +75,6 @@ function obtenerValores(){
 document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {
     e.preventDefault();
 
+    const datosFormulario = obtenerDatosFormulario();
+    // decidir qué hacer luego en base a los datos del formulario...
 });
