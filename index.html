@@ -17,6 +17,7 @@
             <label>
                 Nombre: 
                 <input id="txtNombre" type="text" required>
+                <small id="errorNombre" class="errorInput"></small>
             </label>
         </div>
         <br>
@@ -25,6 +26,7 @@
             <label>
                 Apellido:
                 <input id="txtApellido" type="text" required>
+                <small id="errorApellido" class="errorInput"></small>
             </label>
         </div>
         <br>
@@ -33,6 +35,7 @@
             <label>
                 Capital a invertir:
                 <input id="txtMontoAInvertir" type="number" min="1000">
+                <small id="errorMonto" class="errorInput"></small>
             </label>
             <br>
             <span class="aclaracion">(mínimo $1000)</span>
@@ -41,6 +44,7 @@
             <label>
                 Plazo (en días):
                 <input id="txtCantidadDias" type="number" min="30">
+                <small id="errorDias" class="errorInput"></small>
             </label>
             <br>
             <span class="aclaracion">(mínimo 30 días)</span>

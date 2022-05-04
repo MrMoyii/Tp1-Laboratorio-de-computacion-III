@@ -3,18 +3,6 @@ let valorApellido;
 let valorDinero;
 let cantidadDias;
 
-const mensajeError = {
-    parent: document.querySelector("main"),
-    element: document.createElement("div"),
-    mostrar: function(mensaje) {
-        this.element.textContent = mensaje;
-        this.parent.insertBefore(this.element, document.querySelector("#nombrePersona"));
-    },
-    ocultar: function() {
-        this.parent.removeChild(this.element);
-    }
-}
-
 function esNombreValido(nombre) {
     // El nombre o apellido puede tener como máximo 2 palabras
     // Válido: "Lisandro", "María Ángeles", "Pérez", "Pérez García"
@@ -54,33 +42,28 @@ function montoFinal(valorDinero, cantidadDias){
 
     return montoFinal;
 }
-function validarForm(){
-    let datos = []; //------creo y almaceno los datos en un array en forma de prubea-------//
 
-    /*Si devuelve false es porque no cumple con los requisitos, entonces uso ! para que entre al if,
-    en caso contrario no ingresaria y no se mostraria el error*/
-    if(!esNombreValido(valorNombre)){
-        return mensajeError.mostrar('El nombre ingresado es invalido');
-    }else{
-        datos.push(valorNombre); //-------aca almaceno los datos si son validos-------//
-    }
-    if(!esNombreValido(valorApellido)){
-        return mensajeError.mostrar('El apellido ingreaso es invalido');
-    }else{
-        datos.push(valorApellido);//-------aca almaceno los datos si son validos-------//
-    }
-    if (!validarMontoAInvertir(valorDinero)){
-        return mensajeError.mostrar('El monto ingresado es invalido');
-    }else{
-        datos.push(valorDinero);//-------aca almaceno los datos si son validos-------//
-    }
-    if(!validarDiasAInvertir(cantidadDias)){
-        return mensajeError.mostrar('El tiempo ingresado es invalido');
-    }else{
-        datos.push(cantidadDias);//-------aca almaceno los datos si son validos-------//
-    }
-    // alert(datos.join(' ')); //un alert para probar que todo este funcionando...
+function obtenerDatosFormulario() {
+    obtenerValores();
+
+    const datosFormulario = {
+        nombre: {esValido: esNombreValido(valorNombre)},
+        apellido: {esValido: esNombreValido(valorApellido)},
+        monto: {esValido: validarMontoAInvertir(valorDinero)},
+        dias: {esValido: validarDiasAInvertir(cantidadDias)},
+        esValido: null,
+    };
+
+    datosFormulario.esValido = (
+        datosFormulario.nombre.esValido
+        && datosFormulario.apellido.esValido
+        && datosFormulario.monto.esValido
+        && datosFormulario.dias.esValido
+    );
+
+    return datosFormulario;
 }
+
 function obtenerValores(){
     //agarramos los valores de los inputs
     valorNombre = document.getElementById('txtNombre').value;
@@ -89,10 +72,34 @@ function obtenerValores(){
     cantidadDias = document.getElementById('txtCantidadDias').value;
 }
 
+function mostrarErroresFormulario(datosFormulario) {
+    const elementosDeError = document.querySelectorAll(".errorInput");
+
+    /**
+     * Si un input es válido, al texto del elementoDeError se le asigna una
+     * string vacía para "borrar" un mensaje de error que haya sido generado
+     * previamente, por ejemplo, si el mismo input era inválido antes
+     */
+    elementosDeError[0].textContent = (datosFormulario.nombre.esValido)
+        ? ""
+        : "El nombre puede contener como máximo 2 palabras separadas por un espacio";
+
+    elementosDeError[1].textContent = (datosFormulario.apellido.esValido)
+        ? ""
+        : "El apellido puede contener como máximo 2 palabras separadas por un espacio";
+
+    elementosDeError[2].textContent = (datosFormulario.monto.esValido)
+        ? ""
+        : "El monto a invertir debe ser un número mayor o igual a 1000";
+
+    elementosDeError[3].textContent = (datosFormulario.dias.esValido)
+        ? ""
+        : "La cantidad de días debe ser un número entero mayor o igual a 30";
+}
+
 document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {
     e.preventDefault();
 
-    obtenerValores()
-    validarForm();
-
+    const datosFormulario = obtenerDatosFormulario();
+    // decidir qué hacer luego en base a los datos del formulario...
 });
