@@ -99,5 +99,5 @@ document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {
     e.preventDefault();
 
     const datosFormulario = obtenerDatosFormulario();
-    // decidir qué hacer luego en base a los datos del formulario...
+    mostrarErroresFormulario(datosFormulario);
 });
