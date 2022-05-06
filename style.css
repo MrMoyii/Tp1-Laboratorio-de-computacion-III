@@ -26,16 +26,30 @@ h1{
 }
 
 main{
-    width: 450px;
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
     background: #fff;
-    padding: 40px 0;
+    padding: 40px 10px;
     box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
     border-radius: 10px;
 }
 
 form {
-    width: 100%;
-    margin: auto;
+    width: 50%;
+    margin: 0;
+}
+
+.panel-derecho {
+    width: 50%;
+}
+
+.resultados {
+    height: 55%;
+}
+
+.aclaracion {
+    height: 45%;
 }
 
 main .grupo{
