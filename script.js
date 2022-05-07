@@ -188,6 +188,25 @@ function obtenerCuerpoPeriodos(resultadosCalculos) {
     return cuerpo;
 }
 
+function obtenerResultadosCalculos() {
+    const resultadosCalculos = [];
+    const periodos = (deseaReinvertir) ? 4 : 1;
+    let montoInicial = valorDinero;
+
+    for (let i = 0; i < periodos; i++) {
+        const resultado = {
+            periodo: i+1,
+            montoInicial: montoInicial,
+            montoFinal: montoFinal(montoInicial, cantidadDias, tasaAplicada),
+        };
+
+        resultadosCalculos.push(resultado);
+        montoInicial = resultado.montoFinal;
+    }
+
+    return resultadosCalculos;
+}
+
 document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {
     e.preventDefault();
 
