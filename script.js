@@ -73,7 +73,7 @@ function obtenerValores(){
     //agarramos los valores de los inputs
     valorNombre = document.getElementById('txtNombre').value;
     valorApellido = document.getElementById('txtApellido').value;
-    valorDinero = document.getElementById('txtMontoAInvertir').value;
+    valorDinero = Number(document.getElementById('txtMontoAInvertir').value);
     cantidadDias = document.getElementById('txtCantidadDias').value;
     tasaAplicada = obtenerPorcentaje(cantidadDias);
 }
