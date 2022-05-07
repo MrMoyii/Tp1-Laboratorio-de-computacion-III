@@ -219,3 +219,8 @@ tbody tr:nth-child(odd) {
     padding: 5px;
     margin: 0 auto;
 }
+
+.error-container {
+    height: 1rem;
+    color: rgb(228, 0, 0);
+}
