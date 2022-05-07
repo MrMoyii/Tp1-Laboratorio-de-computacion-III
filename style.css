@@ -87,7 +87,7 @@ main .grupoMontoYDias{
 
 form input{
     background: none;
-    color: #c6c6c6;
+    color: #5e5d5d;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
@@ -98,7 +98,6 @@ form input{
 
 input:focus{ 
     outline: none;
-    color: #5e5d5d;
 }
 
 label{
