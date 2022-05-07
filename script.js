@@ -46,8 +46,6 @@ function obtenerPorcentaje(cantidadDias) {
 
 function montoFinal(valorDinero, cantidadDias, tasaAplicada){
     let montoFinal =  valorDinero + (valorDinero * (cantidadDias/360) * (tasaAplicada/100));
-    // monto puede tener como máximo 2 decimales que representan los centavos
-    montoFinal = Number(montoFinal.toFixed(2));
 
     return montoFinal;
 }
@@ -105,6 +103,89 @@ function mostrarErroresFormulario(datosFormulario) {
         ? ""
         : "La cantidad de días debe ser un número entero mayor o igual a 30";
 
+}
+
+function mostrarResultados(resultadosCalculos) {
+    const containerResultados = document.querySelector("#resultados-container");
+    const tituloResultados = document.createElement("h2");
+    tituloResultados.textContent = "Resultados";
+    const listaResumen = obtenerListaResumen();
+    const tablaResultados = obtenerTablaResultados(resultadosCalculos);
+
+    containerResultados.replaceChildren(tituloResultados, listaResumen, tablaResultados);
+}
+
+function obtenerListaResumen() {
+    const listaResumen = document.createElement("ul");
+    listaResumen.id = "resumen-datos";
+
+    const resumenDatos = {
+        "Nombre": `${valorNombre} ${valorApellido}`,
+        "Capital inicial": valorDinero,
+        "Plazo": cantidadDias,
+        "Tasa aplicada": obtenerPorcentaje(cantidadDias),
+    };
+
+    for (const dato in resumenDatos) {
+        const item = document.createElement("li");
+        item.textContent = resumenDatos[dato];
+        const itemNegrita = document.createElement("span");
+        itemNegrita.className = "bold";
+        itemNegrita.textContent = `${dato}: `;
+        item.prepend(itemNegrita);
+        listaResumen.append(item);
+    }
+
+    return listaResumen;
+}
+
+function obtenerTablaResultados(resultadosCalculos) {
+    const tabla = document.createElement("table");
+    tabla.id = "resultados-calculos";
+
+    const encabezado = obtenerEncabezado(["Período", "Monto inicial", "Monto final"]);
+    const cuerpo = obtenerCuerpoPeriodos(resultadosCalculos);
+
+    tabla.append(encabezado, cuerpo);
+
+    return tabla;
+
+}
+
+function obtenerEncabezado(nombresCeldas) {
+    const encabezado = document.createElement("thead");
+    const filaEncabezado = document.createElement("tr");
+
+    for (const nombre of nombresCeldas) {
+        const celda = document.createElement("th");
+        celda.textContent = nombre;
+        filaEncabezado.appendChild(celda);
+    }
+
+    encabezado.appendChild(filaEncabezado);
+
+    return encabezado;
+}
+
+function obtenerCuerpoPeriodos(resultadosCalculos) {
+    const cuerpo = document.createElement("tbody");
+
+    for (resultado of resultadosCalculos) {
+        const fila = document.createElement("tr");
+        const periodo = document.createElement("td");
+        const montoInicial = document.createElement("td");
+        const montoFinal = document.createElement("td");
+
+        periodo.textContent = resultado.periodo;
+        // Incluir dos decimales en los montos para representar a los centavos
+        montoInicial.textContent = resultado.montoInicial.toFixed(2);
+        montoFinal.textContent = resultado.montoFinal.toFixed(2);
+
+        fila.append(periodo, montoInicial, montoFinal);
+        cuerpo.appendChild(fila);
+    }
+
+    return cuerpo;
 }
 
 document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {
