@@ -216,5 +216,10 @@ document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {
     const resultadosCalculos = obtenerResultadosCalculos()
 
     mostrarErroresFormulario(datosFormulario);
+    if (!datosFormulario.esValido) {
+        // datos inválidos -> remover resultados (suponiendo que fueron previamente mostrados)
+       return document.querySelector("#resultados-container").innerHTML = "";
+    }
+
     mostrarResultados(resultadosCalculos);
 });
