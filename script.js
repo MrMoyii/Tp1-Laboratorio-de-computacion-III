@@ -3,6 +3,7 @@ let valorApellido;
 let valorDinero;
 let cantidadDias;
 let tasaAplicada;
+let deseaReinvertir;
 
 function esNombreValido(nombre) {
     // El nombre o apellido puede tener como máximo 2 palabras
@@ -78,6 +79,7 @@ function obtenerValores(){
     valorDinero = Number(document.getElementById('txtMontoAInvertir').value);
     cantidadDias = document.getElementById('txtCantidadDias').value;
     tasaAplicada = obtenerPorcentaje(cantidadDias);
+    deseaReinvertir = document.getElementById('checkBoxReinvertirCapital').checked;
 }
 function mostrarErroresFormulario(datosFormulario) {
     const elementosDeError = document.querySelectorAll(".errorInput");
