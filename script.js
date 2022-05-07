@@ -45,6 +45,8 @@ function obtenerPorcentaje(cantidadDias) {
 
 function montoFinal(valorDinero, cantidadDias, tasaAplicada){
     let montoFinal =  valorDinero + (valorDinero * (cantidadDias/360) * (tasaAplicada/100));
+    // monto puede tener como máximo 2 decimales que representan los centavos
+    montoFinal = Number(montoFinal.toFixed(2));
 
     return montoFinal;
 }
