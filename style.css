@@ -201,6 +201,22 @@ th, td {
     padding: 0.5%;
 }
 
+th {
+    color: white;
+    background-color: #222;
+}
+
 tbody tr:nth-child(odd) {
     background-color: rgb(247, 247, 247);
+}
+
+.tituloCuadro{
+    margin-top: 5%;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+.tablaTasas {
+    padding: 5px;
+    margin: 0 auto;
 }
