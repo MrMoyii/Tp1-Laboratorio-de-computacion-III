@@ -121,9 +121,9 @@ function obtenerListaResumen() {
 
     const resumenDatos = {
         "Nombre": `${valorNombre} ${valorApellido}`,
-        "Capital inicial": valorDinero,
-        "Plazo": cantidadDias,
-        "Tasa aplicada": obtenerPorcentaje(cantidadDias),
+        "Capital inicial": `$${valorDinero}`,
+        "Plazo": `${cantidadDias} días`,
+        "Tasa aplicada": `${tasaAplicada}%`,
     };
 
     for (const dato in resumenDatos) {
