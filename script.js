@@ -140,6 +140,8 @@ function obtenerListaResumen() {
 }
 
 function obtenerTablaResultados(resultadosCalculos) {
+    const tablaContainer = document.createElement("div");
+    tablaContainer.id = "tabla-container";
     const tabla = document.createElement("table");
     tabla.id = "resultados-calculos";
 
@@ -147,9 +149,9 @@ function obtenerTablaResultados(resultadosCalculos) {
     const cuerpo = obtenerCuerpoPeriodos(resultadosCalculos);
 
     tabla.append(encabezado, cuerpo);
+    tablaContainer.appendChild(tabla);
 
-    return tabla;
-
+    return tablaContainer;
 }
 
 function obtenerEncabezado(nombresCeldas) {

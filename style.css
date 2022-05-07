@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
     --colorTextos: #4945459a;
 }
@@ -46,6 +48,27 @@ form {
 
 #resultados-container {
     height: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#resultados-container h2 {
+    font-size: 2rem;
+}
+
+#resumen-datos {
+    list-style-type: none;
+    margin: 10px 0;
+    border: solid 2px #2C3E50;
+    background-color: #58b7c5bd;
+}
+
+#resumen-datos li {
+    padding: 3px;
+}
+#resumen-datos li:nth-child(even) {
+    background-color: rgb(247, 247, 247);
 }
 
 .aclaracion {
@@ -153,4 +176,30 @@ a {
     text-decoration: none;
     color:var(--colorTextos);
     margin: 0 47px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#tabla-container {
+    height: 100%;
+}
+
+table {
+    text-align: center;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #58b7c5bd;
+    border: solid 2px #2C3E50;
+  }
+
+th, td {
+    border-right: solid 2px #2C3E50;
+    padding: 0.5%;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgb(247, 247, 247);
 }
