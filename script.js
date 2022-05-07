@@ -2,6 +2,7 @@ let valorNombre;
 let valorApellido;
 let valorDinero;
 let cantidadDias;
+let tasaAplicada;
 
 function esNombreValido(nombre) {
     // El nombre o apellido puede tener como máximo 2 palabras
@@ -25,7 +26,8 @@ function validarDiasAInvertir(cantidadDias){
     }
     return true;
 }
-function montoFinal(valorDinero, cantidadDias){
+
+function obtenerPorcentaje(cantidadDias) {
     let porcentaje;
     //validacion de días para el calculo del porcentaje
     if (cantidadDias >= 30 && cantidadDias <= 60){
@@ -37,11 +39,16 @@ function montoFinal(valorDinero, cantidadDias){
     }else{
         porcentaje = 65;
     }
-    //formula
-    let montoFinal =  valorDinero + (valorDinero * (cantidadDias/360) * (porcentaje/100));
+
+    return porcentaje;
+}
+
+function montoFinal(valorDinero, cantidadDias, tasaAplicada){
+    let montoFinal =  valorDinero + (valorDinero * (cantidadDias/360) * (tasaAplicada/100));
 
     return montoFinal;
 }
+
 function obtenerDatosFormulario() {
     obtenerValores();
 
@@ -68,6 +75,7 @@ function obtenerValores(){
     valorApellido = document.getElementById('txtApellido').value;
     valorDinero = document.getElementById('txtMontoAInvertir').value;
     cantidadDias = document.getElementById('txtCantidadDias').value;
+    tasaAplicada = obtenerPorcentaje(cantidadDias);
 }
 function mostrarErroresFormulario(datosFormulario) {
     const elementosDeError = document.querySelectorAll(".errorInput");
