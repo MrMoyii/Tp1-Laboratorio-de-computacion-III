@@ -211,5 +211,8 @@ document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {
     e.preventDefault();
 
     const datosFormulario = obtenerDatosFormulario();
+    const resultadosCalculos = obtenerResultadosCalculos()
+
     mostrarErroresFormulario(datosFormulario);
+    mostrarResultados(resultadosCalculos);
 });
