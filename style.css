@@ -87,7 +87,7 @@ main .grupoMontoYDias{
 
 form input{
     background: none;
-    color: #c6c6c6;
+    color: #5e5d5d;
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: block;
@@ -98,7 +98,6 @@ form input{
 
 input:focus{ 
     outline: none;
-    color: #5e5d5d;
 }
 
 label{
@@ -201,6 +200,27 @@ th, td {
     padding: 0.5%;
 }
 
+th {
+    color: white;
+    background-color: #222;
+}
+
 tbody tr:nth-child(odd) {
     background-color: rgb(247, 247, 247);
+}
+
+.tituloCuadro{
+    margin-top: 5%;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+.tablaTasas {
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.error-container {
+    height: 1rem;
+    color: rgb(228, 0, 0);
 }

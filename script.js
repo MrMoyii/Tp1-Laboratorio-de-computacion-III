@@ -89,11 +89,11 @@ function mostrarErroresFormulario(datosFormulario) {
      */
     elementosDeError[0].textContent = (datosFormulario.nombre.esValido)
         ? ""
-        : "El nombre puede contener como máximo 2 palabras separadas por un espacio";
+        : "El nombre puede contener como máximo 2 palabras";
 
     elementosDeError[1].textContent = (datosFormulario.apellido.esValido)
         ? ""
-        : "El apellido puede contener como máximo 2 palabras separadas por un espacio";
+        : "El apellido puede contener como máximo 2 palabras";
 
     elementosDeError[2].textContent = (datosFormulario.monto.esValido)
         ? ""
@@ -101,7 +101,7 @@ function mostrarErroresFormulario(datosFormulario) {
 
     elementosDeError[3].textContent = (datosFormulario.dias.esValido)
         ? ""
-        : "La cantidad de días debe ser un número entero mayor o igual a 30";
+        : "La cantidad de días debe ser mayor o igual a 30";
 
 }
 
