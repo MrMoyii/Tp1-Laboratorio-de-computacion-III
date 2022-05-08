@@ -36,13 +36,19 @@
                     <small id="errorDias" class="errorInput"></small>
                 </div>
             </div>
+            <div id="reinvertirCapitalPersona" class="grupo">
+                ¿Desea reinvertir el capital? <input type="checkbox" id="checkBoxReinvertirCapital">
+            </div>
+            <button id="btnCalcularMonto" value="calcular">Calcular</button>
         </form>
-        <div id="reinvertirCapitalPersona" class="grupo">
-            ¿Desea reinvertir el capital? <input type="checkbox" id="checkBoxReinvertirCapital">
-        </div>
-        <button id="btnCalcularMonto" value="calcular">Calcular</button>    
-        <div class="aclaracion" class="grupo">
-            <a href="porcentajeTasas.docx">Porcentaje de tasas aquí</a>
+
+        <div class="panel-derecho">
+            <div id="resultados-container"></div>
+
+            <div class="aclaracion" class="grupo">
+                <!-- PENDIENTE: Reemplazar el siguiente elemento por una tabla mostrando los porcentajes -->
+                <a href="porcentajeTasas.docx">Porcentaje de tasas aquí</a>
+            </div>
         </div>
     </main>
 </body>
