@@ -2,6 +2,8 @@ let valorNombre;
 let valorApellido;
 let valorDinero;
 let cantidadDias;
+let tasaAplicada;
+let deseaReinvertir;
 
 function esNombreValido(nombre) {
     // El nombre o apellido puede tener como máximo 2 palabras
@@ -25,7 +27,8 @@ function validarDiasAInvertir(cantidadDias){
     }
     return true;
 }
-function montoFinal(valorDinero, cantidadDias){
+
+function obtenerPorcentaje(cantidadDias) {
     let porcentaje;
     //validacion de días para el calculo del porcentaje
     if (cantidadDias >= 30 && cantidadDias <= 60){
@@ -37,11 +40,16 @@ function montoFinal(valorDinero, cantidadDias){
     }else{
         porcentaje = 65;
     }
-    //formula
-    let montoFinal =  valorDinero + (valorDinero * (cantidadDias/360) * (porcentaje/100));
+
+    return porcentaje;
+}
+
+function montoFinal(valorDinero, cantidadDias, tasaAplicada){
+    let montoFinal =  valorDinero + (valorDinero * (cantidadDias/360) * (tasaAplicada/100));
 
     return montoFinal;
 }
+
 function obtenerDatosFormulario() {
     obtenerValores();
 
@@ -66,8 +74,10 @@ function obtenerValores(){
     //agarramos los valores de los inputs
     valorNombre = document.getElementById('txtNombre').value;
     valorApellido = document.getElementById('txtApellido').value;
-    valorDinero = document.getElementById('txtMontoAInvertir').value;
+    valorDinero = Number(document.getElementById('txtMontoAInvertir').value);
     cantidadDias = document.getElementById('txtCantidadDias').value;
+    tasaAplicada = obtenerPorcentaje(cantidadDias);
+    deseaReinvertir = document.getElementById('checkBoxReinvertirCapital').checked;
 }
 function mostrarErroresFormulario(datosFormulario) {
     const elementosDeError = document.querySelectorAll(".errorInput");
@@ -79,11 +89,11 @@ function mostrarErroresFormulario(datosFormulario) {
      */
     elementosDeError[0].textContent = (datosFormulario.nombre.esValido)
         ? ""
-        : "El nombre puede contener como máximo 2 palabras separadas por un espacio";
+        : "El nombre puede contener como máximo 2 palabras";
 
     elementosDeError[1].textContent = (datosFormulario.apellido.esValido)
         ? ""
-        : "El apellido puede contener como máximo 2 palabras separadas por un espacio";
+        : "El apellido puede contener como máximo 2 palabras";
 
     elementosDeError[2].textContent = (datosFormulario.monto.esValido)
         ? ""
@@ -91,13 +101,125 @@ function mostrarErroresFormulario(datosFormulario) {
 
     elementosDeError[3].textContent = (datosFormulario.dias.esValido)
         ? ""
-        : "La cantidad de días debe ser un número entero mayor o igual a 30";
+        : "La cantidad de días debe ser mayor o igual a 30";
 
+}
+
+function mostrarResultados(resultadosCalculos) {
+    const containerResultados = document.querySelector("#resultados-container");
+    const tituloResultados = document.createElement("h2");
+    tituloResultados.textContent = "Resultados";
+    const listaResumen = obtenerListaResumen();
+    const tablaResultados = obtenerTablaResultados(resultadosCalculos);
+
+    containerResultados.replaceChildren(tituloResultados, listaResumen, tablaResultados);
+}
+
+function obtenerListaResumen() {
+    const listaResumen = document.createElement("ul");
+    listaResumen.id = "resumen-datos";
+
+    const resumenDatos = {
+        "Nombre": `${valorNombre} ${valorApellido}`,
+        "Capital inicial": `$${valorDinero}`,
+        "Plazo": `${cantidadDias} días`,
+        "Tasa aplicada": `${tasaAplicada}%`,
+    };
+
+    for (const dato in resumenDatos) {
+        const item = document.createElement("li");
+        item.textContent = resumenDatos[dato];
+        const itemNegrita = document.createElement("span");
+        itemNegrita.className = "bold";
+        itemNegrita.textContent = `${dato}: `;
+        item.prepend(itemNegrita);
+        listaResumen.append(item);
+    }
+
+    return listaResumen;
+}
+
+function obtenerTablaResultados(resultadosCalculos) {
+    const tablaContainer = document.createElement("div");
+    tablaContainer.id = "tabla-container";
+    const tabla = document.createElement("table");
+    tabla.id = "resultados-calculos";
+
+    const encabezado = obtenerEncabezado(["Período", "Monto inicial", "Monto final"]);
+    const cuerpo = obtenerCuerpoPeriodos(resultadosCalculos);
+
+    tabla.append(encabezado, cuerpo);
+    tablaContainer.appendChild(tabla);
+
+    return tablaContainer;
+}
+
+function obtenerEncabezado(nombresCeldas) {
+    const encabezado = document.createElement("thead");
+    const filaEncabezado = document.createElement("tr");
+
+    for (const nombre of nombresCeldas) {
+        const celda = document.createElement("th");
+        celda.textContent = nombre;
+        filaEncabezado.appendChild(celda);
+    }
+
+    encabezado.appendChild(filaEncabezado);
+
+    return encabezado;
+}
+
+function obtenerCuerpoPeriodos(resultadosCalculos) {
+    const cuerpo = document.createElement("tbody");
+
+    for (resultado of resultadosCalculos) {
+        const fila = document.createElement("tr");
+        const periodo = document.createElement("td");
+        const montoInicial = document.createElement("td");
+        const montoFinal = document.createElement("td");
+
+        periodo.textContent = resultado.periodo;
+        // Incluir dos decimales en los montos para representar a los centavos
+        montoInicial.textContent = resultado.montoInicial.toFixed(2);
+        montoFinal.textContent = resultado.montoFinal.toFixed(2);
+
+        fila.append(periodo, montoInicial, montoFinal);
+        cuerpo.appendChild(fila);
+    }
+
+    return cuerpo;
+}
+
+function obtenerResultadosCalculos() {
+    const resultadosCalculos = [];
+    const periodos = (deseaReinvertir) ? 4 : 1;
+    let montoInicial = valorDinero;
+
+    for (let i = 0; i < periodos; i++) {
+        const resultado = {
+            periodo: i+1,
+            montoInicial: montoInicial,
+            montoFinal: montoFinal(montoInicial, cantidadDias, tasaAplicada),
+        };
+
+        resultadosCalculos.push(resultado);
+        montoInicial = resultado.montoFinal;
+    }
+
+    return resultadosCalculos;
 }
 
 document.getElementById('btnCalcularMonto').addEventListener('click', (e)=> {
     e.preventDefault();
 
     const datosFormulario = obtenerDatosFormulario();
+    const resultadosCalculos = obtenerResultadosCalculos()
+
     mostrarErroresFormulario(datosFormulario);
+    if (!datosFormulario.esValido) {
+        // datos inválidos -> remover resultados (suponiendo que fueron previamente mostrados)
+       return document.querySelector("#resultados-container").innerHTML = "";
+    }
+
+    mostrarResultados(resultadosCalculos);
 });
