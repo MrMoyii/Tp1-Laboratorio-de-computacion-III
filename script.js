@@ -68,10 +68,18 @@ function obtenerDatosFormulario() {
 
     return datosFormulario;
 }
+
+// Para asegurar que los nombres y/o apellidos ingresados por el usuario no tienen espacios extra
+function limpiarNombreIngresado(nombre) {
+    return nombre
+        .trim()
+        .replace(/(\s+)/g, " ");
+}
+
 function obtenerValores(){
     //agarramos los valores de los inputs
-    valorNombre = document.getElementById('txtNombre').value;
-    valorApellido = document.getElementById('txtApellido').value;
+    valorNombre = limpiarNombreIngresado(document.getElementById('txtNombre').value);
+    valorApellido = limpiarNombreIngresado(document.getElementById('txtApellido').value);
     valorDinero = Number(document.getElementById('txtMontoAInvertir').value);
     cantidadDias = document.getElementById('txtCantidadDias').value;
     tasaAplicada = obtenerPorcentaje(cantidadDias);
