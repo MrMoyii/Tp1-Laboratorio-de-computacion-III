@@ -6,11 +6,9 @@ let tasaAplicada;
 let deseaReinvertir;
 
 function esNombreValido(nombre) {
-    // El nombre o apellido puede tener como máximo 2 palabras
-    // Válido: "Lisandro", "María Ángeles", "Pérez", "Pérez García"
-    // No válido: "María de los Ángeles"
-    return /^\p{L}+(\s\p{L}+)?$/u.test(nombre);
+    return /^\p{L}+(\s\p{L}+)*$/u.test(nombre);
 }
+
 function validarMontoAInvertir(valorDinero){
     //valida si el monto a invertir ingreasdo es un número o si es menor a 1000
     if(isNaN(valorDinero) || valorDinero < 1000) {
@@ -70,10 +68,18 @@ function obtenerDatosFormulario() {
 
     return datosFormulario;
 }
+
+// Para asegurar que los nombres y/o apellidos ingresados por el usuario no tienen espacios extra
+function limpiarNombreIngresado(nombre) {
+    return nombre
+        .trim()
+        .replace(/(\s+)/g, " ");
+}
+
 function obtenerValores(){
     //agarramos los valores de los inputs
-    valorNombre = document.getElementById('txtNombre').value;
-    valorApellido = document.getElementById('txtApellido').value;
+    valorNombre = limpiarNombreIngresado(document.getElementById('txtNombre').value);
+    valorApellido = limpiarNombreIngresado(document.getElementById('txtApellido').value);
     valorDinero = Number(document.getElementById('txtMontoAInvertir').value);
     cantidadDias = document.getElementById('txtCantidadDias').value;
     tasaAplicada = obtenerPorcentaje(cantidadDias);
@@ -89,11 +95,11 @@ function mostrarErroresFormulario(datosFormulario) {
      */
     elementosDeError[0].textContent = (datosFormulario.nombre.esValido)
         ? ""
-        : "El nombre puede contener como máximo 2 palabras";
+        : "Ingrese un nombre válido";
 
     elementosDeError[1].textContent = (datosFormulario.apellido.esValido)
         ? ""
-        : "El apellido puede contener como máximo 2 palabras";
+        : "Ingrese un apellido válido";
 
     elementosDeError[2].textContent = (datosFormulario.monto.esValido)
         ? ""
