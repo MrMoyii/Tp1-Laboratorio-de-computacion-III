@@ -1,10 +1,10 @@
 // Funciones que los componentes utilizan para validar datos ingresados por el usuario
 
-function esNombreValido(nombre) {
+export function esNombreValido(nombre) {
     return /^\p{L}+(\s\p{L}+)*$/u.test(nombre)
 }
 
-function validarMontoAInvertir(valorDinero) {
+export function validarMontoAInvertir(valorDinero) {
     if(isNaN(valorDinero) || valorDinero < 1000) {
         return false;
     }
@@ -12,7 +12,7 @@ function validarMontoAInvertir(valorDinero) {
     return true;
 }
 
-function validarDiasAInvertir(cantidadDias) {
+export function validarDiasAInvertir(cantidadDias) {
     cantidadDias = Number(cantidadDias)
 
     if (!Number.isInteger(cantidadDias) || cantidadDias < 30) {
@@ -22,15 +22,8 @@ function validarDiasAInvertir(cantidadDias) {
     return true;
 }
 
-function limpiarNombreIngresado(nombre) {
+export function limpiarNombreIngresado(nombre) {
     return nombre
         .trim()
         .replace(/(\s+)/g, " ");
-}
-
-export {
-    esNombreValido,
-    validarMontoAInvertir,
-    validarDiasAInvertir,
-    limpiarNombreIngresado,
 }
