@@ -37,6 +37,12 @@ export default {
                 apellido: this.apellido,
                 monto: this.monto,
                 dias: this.dias,
+                esValido: Boolean (
+                    this.nombre
+                    && this.apellido
+                    && this.monto
+                    && this.dias
+                )
             }
         }
     },
