@@ -1,33 +1,33 @@
 <script>
-    import Formulario from "./assets/components/Formulario.vue"
+import Formulario from "./assets/components/Formulario.vue"
 
-    export default {
-        data() {
-            return {
-                formularioValido: false
-            }
+export default {
+    data() {
+        return {
+            datosFormulario: {
+                nombre: null,
+                apellido: null,
+                monto: null,
+                dias: null,
+                esValido: false,
+            },
+        }
+    },
+    methods: {
+        setDatosFormulario(datos) {
+            this.datosFormulario = datos
         },
-        methods: {
-            validarFormularioRecibido(datosFormulario) {
-                this.formularioValido = Boolean(
-                    datosFormulario.nombre
-                    && datosFormulario.apellido
-                    && datosFormulario.monto
-                    && datosFormulario.dias
-                )
-            }
-        },
-        components: {
-            Formulario,
-        },
-    }
+    },
+    components: {
+        Formulario,
+    },
+}
 </script>
 
 <template>
-  <Formulario @formulario-enviado="validarFormularioRecibido"/>
+  <Formulario @formulario-enviado="setDatosFormulario"/>
 
   <div class="panel-derecho">
-    <!-- Acá iría un componente para los resultados -->
     <div id="resultados-container"></div>
 
     <div class="aclaracion">
