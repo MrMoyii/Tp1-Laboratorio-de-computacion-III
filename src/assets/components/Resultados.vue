@@ -25,8 +25,8 @@ export default {
     <ul id="resumen-datos">
         <li><span class="bold">Nombre: </span>{{datosFormulario.nombre}} {{datosFormulario.apellido}}</li>
         <li><span class="bold">Capital inicial: </span>${{datosFormulario.monto}}</li>
-        <li><span class="bold">Plazo: </span>{{datosFormulario.dias}} </li>
-        <li><span class="bold">Tasa aplicada: </span>{{porcentaje}}</li>
+        <li><span class="bold">Plazo: </span>{{datosFormulario.dias}} días</li>
+        <li><span class="bold">Tasa aplicada: </span>{{porcentaje}}%</li>
     </ul>
     <div id="tabla-container">
         <table id="resultados-calculos">
