@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --colorTextos: #4945459a;
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto';
+    background: #2C3E50;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	height: 800px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    background: #fff;
+    padding: 40px 10px;
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+#resultados-container {
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.panel-derecho {
+    width: 50%;
+}
+
+.tituloCuadro {
+    margin-top: 5%;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+.tablaTasas {
+    padding: 5px;
+    margin: 0 auto;
+}
