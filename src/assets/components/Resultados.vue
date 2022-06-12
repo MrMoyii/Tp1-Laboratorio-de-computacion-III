@@ -2,12 +2,23 @@
 import {
     obtenerPorcentaje,
     montoFinal,
+    obtenerResultadosCalculos
 } from "../../utils/calculos"
-
 export default {
     props: {
         datosFormulario: Object
-    }
+    },
+    computed: {
+        porcentaje() {
+            return obtenerPorcentaje(this.datosFormulario.dias)
+        },
+        montoFinalFuncion() {
+            return montoFinal(this.datosFormulario.monto,this.datosFormulario.dias, this.porcentaje)
+        },
+        resultados() {
+            return obtenerResultadosCalculos(this.datosFormulario, this.porcentaje)
+        }
+    },
 }
 </script>
 
@@ -17,8 +28,8 @@ export default {
     <ul id="resumen-datos">
         <li><span class="bold">Nombre: </span>{{datosFormulario.nombre}} {{datosFormulario.apellido}}</li>
         <li><span class="bold">Capital inicial: </span>${{datosFormulario.monto}}</li>
-        <li><span class="bold">Plazo: </span>{{datosFormulario.dias}}</li>
-        <li><span class="bold">Tasa aplicada: </span>{{datosFormulario.porcentaje}}</li>
+        <li><span class="bold">Plazo: </span>{{datosFormulario.dias}} </li>
+        <li><span class="bold">Tasa aplicada: </span>{{porcentaje}}</li>
     </ul>
     <div id="tabla-container">
         <table id="resultados-calculos">
@@ -30,25 +41,10 @@ export default {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1000.00</td>
-                    <td>1033.33</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>1033.33</td>
-                    <td>1067.78</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>1067.78</td>
-                    <td>1103.37</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>1103.37</td>
-                    <td>1140.15</td>
+                <tr v-for="resultado in resultados">
+                    <td>{{ resultado.periodo}}</td>
+                    <td>{{ Math.round(resultado.montoInicial * 100) / 100 }}</td>
+                    <td>{{ Math.round(resultado.montoFinal * 100) / 100 }}</td>
                 </tr>
             </tbody>
         </table>

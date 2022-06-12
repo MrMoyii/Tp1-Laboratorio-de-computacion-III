@@ -37,6 +37,7 @@ export default {
                 apellido: this.apellido,
                 monto: this.monto,
                 dias: this.dias,
+                deseaReinvertir: this.deseaReinvertir,                
                 esValido: Boolean (
                     this.nombre
                     && this.apellido

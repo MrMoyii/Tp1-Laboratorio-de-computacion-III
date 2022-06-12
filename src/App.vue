@@ -14,15 +14,14 @@ export default {
                 apellido: null,
                 monto: null,
                 dias: null,
+                deseaReinvertir: null,
                 esValido: false,
-                porcentaje: null,
             },
         }
     },
     methods: {
         setDatosFormulario(datos) {
             this.datosFormulario = datos;
-            this.porcentaje = obtenerPorcentaje(datos.dias)  
         },
     },
     components: {
@@ -38,7 +37,7 @@ export default {
 
   <div class="panel-derecho">
     <div id="resultados-container">
-        <Resultados :datos-formulario="datosFormulario"/>
+        <Resultados v-if="datosFormulario.esValido" :datos-formulario="datosFormulario"/>
     </div>
     <div class="aclaracion">
         <table class="tablaTasas">
