@@ -37,6 +37,5 @@ export function obtenerResultadosCalculos(datosFormulario, tasaAplicada) {
         resultadosCalculos.push(resultado);
         montoInicial = resultado.montoFinal;
     }
-    console.log(resultadosCalculos);
     return resultadosCalculos;
 }

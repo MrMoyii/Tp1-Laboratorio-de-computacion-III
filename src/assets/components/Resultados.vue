@@ -12,9 +12,6 @@ export default {
         porcentaje() {
             return obtenerPorcentaje(this.datosFormulario.dias)
         },
-        montoFinalFuncion() {
-            return montoFinal(this.datosFormulario.monto,this.datosFormulario.dias, this.porcentaje)
-        },
         resultados() {
             return obtenerResultadosCalculos(this.datosFormulario, this.porcentaje)
         }
@@ -43,8 +40,8 @@ export default {
             <tbody>
                 <tr v-for="resultado in resultados">
                     <td>{{ resultado.periodo}}</td>
-                    <td>{{ Math.round(resultado.montoInicial * 100) / 100 }}</td>
-                    <td>{{ Math.round(resultado.montoFinal * 100) / 100 }}</td>
+                    <td>{{ resultado.montoInicial.toFixed(2) }}</td>
+                    <td>{{ resultado.montoFinal.toFixed(2) }}</td>
                 </tr>
             </tbody>
         </table>
