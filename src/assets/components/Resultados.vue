@@ -20,7 +20,6 @@ export default {
 </script>
 
 <template>
-<div id="resultados-container">
     <h2>Resultados</h2>
     <ul id="resumen-datos">
         <li><span class="bold">Nombre: </span>{{datosFormulario.nombre}} {{datosFormulario.apellido}}</li>
@@ -46,7 +45,6 @@ export default {
             </tbody>
         </table>
     </div>
-</div>
 </template>
 
 <style>
