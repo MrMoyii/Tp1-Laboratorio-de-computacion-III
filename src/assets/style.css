@@ -40,14 +40,3 @@ main {
 .panel-derecho {
     width: 50%;
 }
-
-.tituloCuadro {
-    margin-top: 5%;
-    margin-bottom: 5px;
-    text-decoration: underline;
-}
-
-.tablaTasas {
-    padding: 5px;
-    margin: 0 auto;
-}
