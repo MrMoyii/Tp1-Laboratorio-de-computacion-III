@@ -1,7 +1,6 @@
 <script>
 import {
     obtenerPorcentaje,
-    montoFinal,
     obtenerResultadosCalculos
 } from "../../utils/calculos"
 export default {
@@ -48,13 +47,6 @@ export default {
 </template>
 
 <style>
-#resultados-container {
-    height: 55%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 #resultados-container h2 {
     text-align: center;
     font-size: 2rem;

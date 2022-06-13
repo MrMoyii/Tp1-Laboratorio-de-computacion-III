@@ -1,10 +1,7 @@
 <script>
 import Formulario from "./assets/components/Formulario.vue"
 import Resultados from "./assets/components/Resultados.vue"
-import {
-    obtenerPorcentaje,
-    montoFinal,
-} from "./utils/calculos"
+import ComparacionTasas from "./assets/components/ComparacionTasas.vue"
 
 export default {
     data() {
@@ -27,6 +24,7 @@ export default {
     components: {
         Formulario,
         Resultados,
+        ComparacionTasas,
     },
 }
 </script>
@@ -39,32 +37,8 @@ export default {
     <div id="resultados-container">
         <Resultados v-if="datosFormulario.esValido" :datos-formulario="datosFormulario"/>
     </div>
-    <div class="aclaracion">
-        <table class="tablaTasas">
-            <caption class="tituloCuadro">Cuadro comparativo tasas y días</caption>
-
-            <tr>
-                <th>Cantidad de días</th>
-                <th>Porcentaje %</th>
-            </tr>
-            <tr>
-                <td>30 - 60</td>
-                <td>40</td>
-            </tr>
-            <tr>
-                <td>61 - 120</td>
-                <td>45</td>
-            </tr>
-            <tr>
-                <td>121 - 360</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>361 en adelante</td>
-                <td>65</td>
-            </tr>
-        </table>
-    </div>
+    
+    <ComparacionTasas/>
   </div>
 </template>
 
