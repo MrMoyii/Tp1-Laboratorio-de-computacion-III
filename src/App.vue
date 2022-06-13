@@ -2,10 +2,6 @@
 import Formulario from "./assets/components/Formulario.vue"
 import Resultados from "./assets/components/Resultados.vue"
 import ComparacionTasas from "./assets/components/ComparacionTasas.vue"
-import {
-    obtenerPorcentaje,
-    montoFinal,
-} from "./utils/calculos"
 
 export default {
     data() {

@@ -1,7 +1,6 @@
 <script>
 import {
     obtenerPorcentaje,
-    montoFinal,
     obtenerResultadosCalculos
 } from "../../utils/calculos"
 export default {
